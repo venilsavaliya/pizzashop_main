@@ -42,3 +42,11 @@ D:\pizzashop_solution\pizzashop\bin\Debug\net7.0\Npgsql.dll
 D:\pizzashop_solution\pizzashop\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 D:\pizzashop_solution\pizzashop\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll
 D:\pizzashop_solution\pizzashop\obj\Debug\net7.0\pizzashop.csproj.AssemblyReference.cache
+D:\pizzashop_solution\pizzashop\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
+D:\pizzashop_solution\pizzashop\bin\Debug\net7.0\MailKit.dll
+D:\pizzashop_solution\pizzashop\bin\Debug\net7.0\MimeKit.dll
+D:\pizzashop_solution\pizzashop\bin\Debug\net7.0\System.Formats.Asn1.dll
+D:\pizzashop_solution\pizzashop\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
+D:\pizzashop_solution\pizzashop\bin\Debug\net7.0\System.Text.Encoding.CodePages.dll
+D:\pizzashop_solution\pizzashop\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll
+D:\pizzashop_solution\pizzashop\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Text.Encoding.CodePages.dll
