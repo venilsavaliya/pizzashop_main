@@ -1,9 +1,12 @@
 ﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using pizzashop.Models;
 
 namespace pizzashop.Controllers;
 
+// [ApiController]
+// [Route("api/[controller]")]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
@@ -13,6 +16,8 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    // [HttpGet("Index")]
+      [Authorize]
     public IActionResult Index()
     {
        string userEmail = Request.Cookies["UserEmail"];
@@ -25,15 +30,13 @@ public class HomeController : Controller
         ViewBag.Email = userEmail;
         return View();
     }
-
+   
     public IActionResult Privacy()
     {
         return View();
     }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-    }
+    
+
+   
 }

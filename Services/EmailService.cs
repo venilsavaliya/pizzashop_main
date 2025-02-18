@@ -2,6 +2,7 @@ using MailKit.Net.Smtp;
 using MimeKit;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
+using System.Net;
 
 public class EmailService : IEmailService
 {
@@ -12,22 +13,30 @@ public class EmailService : IEmailService
         _configuration = configuration;
     }
 
-    public async Task SendEmailAsync(string to, string subject, string body)
+    public async Task<Task> SendEmailAsync(string email, string subject, string htmlMessage)
     {
         var emailSettings = _configuration.GetSection("EmailSettings");
+        // ServicePointManager.CheckCertificateRevocationList = false;
 
         var emailMessage = new MimeMessage();
-        emailMessage.From.Add(new MailboxAddress("Support", emailSettings["SenderEmail"]));
-        emailMessage.To.Add(new MailboxAddress("", to));
+        emailMessage.From.Add(MailboxAddress.Parse("venilsavaliya999@gmail.com"));
+        emailMessage.To.Add(MailboxAddress.Parse(email));
         emailMessage.Subject = subject;
-        emailMessage.Body = new TextPart("html") { Text = body };
+        emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = htmlMessage };
 
         using (var client = new SmtpClient())
         {
-            await client.ConnectAsync(emailSettings["SmtpServer"], int.Parse(emailSettings["Port"]), false);
-            await client.AuthenticateAsync(emailSettings["SenderEmail"], emailSettings["SenderPassword"]);
-            await client.SendAsync(emailMessage);
-            await client.DisconnectAsync(true);
+            client.Connect(emailSettings["SmtpServer"], int.Parse(emailSettings["Port"]), false);
+            client.Authenticate(emailSettings["SenderEmail"], emailSettings["SenderPassword"]);
+            client.Send(emailMessage);
+            client.Disconnect(true);
         }
+
+        return Task.CompletedTask;
+    }
+
+    Task IEmailService.SendEmailAsync(string to, string subject, string body)
+    {
+        return SendEmailAsync(to, subject, body);
     }
 }
