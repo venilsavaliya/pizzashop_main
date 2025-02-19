@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3zvRdjrLEahOrsQrtg4nXoBZ34ByKR7WomH6lW2NWGA=",
+  "Hash": "5YWSkHgAd15WCvhjaep+JmxnK0TtOdGlzndFIIwF4Dc=",
   "Source": "pizzashop",
   "BasePath": "_content/pizzashop",
   "Mode": "Default",
@@ -136,6 +136,23 @@
       "OriginalItemSpec": "wwwroot\\images\\dominos_background.jpg"
     },
     {
+      "Identity": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\images\\icons\\arrow-clockwise.svg",
+      "SourceId": "pizzashop",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\",
+      "BasePath": "_content/pizzashop",
+      "RelativePath": "images/icons/arrow-clockwise.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\icons\\arrow-clockwise.svg"
+    },
+    {
       "Identity": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\images\\icons\\arrow-down-up.svg",
       "SourceId": "pizzashop",
       "SourceType": "Discovered",
@@ -151,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\icons\\arrow-down-up.svg"
+    },
+    {
+      "Identity": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\images\\icons\\box-arrow-right.svg",
+      "SourceId": "pizzashop",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\",
+      "BasePath": "_content/pizzashop",
+      "RelativePath": "images/icons/box-arrow-right.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\icons\\box-arrow-right.svg"
     },
     {
       "Identity": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\images\\icons\\cloud-upload.svg",

@@ -10,10 +10,12 @@ namespace pizzashop.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
+    private readonly PizzashopMainContext _db;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger,PizzashopMainContext db)
     {
         _logger = logger;
+        _db = db;
     }
 
     // [HttpGet("Index")]
@@ -26,14 +28,40 @@ public class HomeController : Controller
         // {
         //     return RedirectToAction("Login", "User");
         // }
-
-        ViewBag.Email = userEmail;
+        // ViewBag.Email = userEmail;
         return View();
     }
    
     public IActionResult Privacy()
     {
         return View();
+    }
+
+    public IActionResult Profile()
+    {
+        var username = Request.Cookies["UserName"];
+    
+    if (username != null)
+    {
+        // Fetch the user data from the database
+        var user = _db.Userdetails.FirstOrDefault(u => u.UserName == username);
+        
+        if (user != null)
+        {
+            // Pass user data to the view
+            return View(user);
+        }
+        else
+        {
+            // Redirect to login if user is not found
+            return RedirectToAction("Login", "User");
+        }
+    }
+    else
+    {
+        // Redirect to login if cookie is missing
+        return RedirectToAction("Login", "User");
+    }
     }
 
     

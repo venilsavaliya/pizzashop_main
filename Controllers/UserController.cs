@@ -15,11 +15,11 @@ public class UserController : Controller
 
     private readonly JwtServices _jwtService;
 
-    public UserController(PizzashopMainContext db, IEmailService emailService,JwtServices jwtService)
+    public UserController(PizzashopMainContext db, IEmailService emailService, JwtServices jwtService)
     {
         _db = db;
         _emailService = emailService;
-        _jwtService =jwtService;
+        _jwtService = jwtService;
     }
 
     // GET: UserController/Login
@@ -36,50 +36,84 @@ public class UserController : Controller
     // POST: UserController/Login
     [HttpPost]
     [ValidateAntiForgeryToken]
-  public async Task<IActionResult> Login(LoginViewModel user)  
-    // if (ModelState.IsValid)
+    public async Task<IActionResult> Login(LoginViewModel user)
     {
-        var existingUser = _db.Users.FirstOrDefault(u => u.Email == user.Email);
-
-
-        if (existingUser != null)
+        if (ModelState.IsValid)
         {
-             
-            if ( PasswordUtility.VerifyPassword(user.Password,existingUser.Password))
-            {
-                TempData["success"] = "Login Successful";
-                 var token = _jwtService.GenerateJwtToken(existingUser.Email,"Admina");
-                 Console.WriteLine(token);
+            var existingUser = _db.Users.FirstOrDefault(u => u.Email == user.Email);
 
-                // HttpContext.Session.SetString("UserId", existingUser.Id.ToString());
-                // ViewData["UserId"] = HttpContext.Session.GetString("UserId");
-                // if (user.RememberMe == true)
+
+            if (existingUser != null)
+            {
+
+                if (PasswordUtility.VerifyPassword(user.Password, existingUser.Password))
                 {
-                    Response.Cookies.Append("jwt",token, new CookieOptions
+                    TempData["success"] = "Login Successful";
+
+                    // var role = _db.Roles.FirstOrDefault(u => u.UserId == existingUser.Id);
+                    var roleid = _db.Userdetails.FirstOrDefault(u => u.UserId == existingUser.Id);
+                    string role = _db.Roles.FirstOrDefault(u => u.Roleid == roleid.RoleId)?.Name ?? "User";
+                    var token = _jwtService.GenerateJwtToken(existingUser.Email, role);
+                    Console.WriteLine(token);
+
+                    // HttpContext.Session.SetString("UserId", existingUser.Id.ToString());
+                    // ViewData["UserId"] = HttpContext.Session.GetString("UserId");
+                    // if (user.RememberMe == true)
+                    {
+                        Response.Cookies.Append("jwt", token, new CookieOptions
+                        {
+                            Expires = DateTime.UtcNow.AddDays(7),
+                            HttpOnly = true,
+                            Secure = true,
+                            SameSite = SameSiteMode.Strict
+                        });
+                    }
+                    var _user = _db.Userdetails.FirstOrDefault(u => u.UserId == existingUser.Id);
+                    string username = _user?.UserName ?? "User";
+                    string url = _user?.Profile ?? "User";
+                    Response.Cookies.Append("UserName", username, new CookieOptions
                     {
                         Expires = DateTime.UtcNow.AddDays(7),
                         HttpOnly = true,
                         Secure = true,
                         SameSite = SameSiteMode.Strict
                     });
-                }
+                    Response.Cookies.Append("ProfileUrl", url , new CookieOptions
+                    {
+                        Expires = DateTime.UtcNow.AddDays(7),
+                        HttpOnly = true,
+                        Secure = true,
+                        SameSite = SameSiteMode.Strict
+                    });
+                    Response.Cookies.Append("email", existingUser.Email , new CookieOptions
+                    {
+                        Expires = DateTime.UtcNow.AddDays(7),
+                        HttpOnly = true,
+                        Secure = true,
+                        SameSite = SameSiteMode.Strict
+                    });
 
-                Console.WriteLine("ok done");
-                return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid email or password.");
+                }
             }
             else
             {
+
                 ModelState.AddModelError(string.Empty, "Invalid email or password.");
+
             }
+            return View(user);
         }
         else
         {
-
-            ModelState.AddModelError(string.Empty, "Invalid email or password.");
-
+            return View(user);
         }
-        return View(user);
     }
+
 
     // GET: UserController/ForgotPassword
     public IActionResult ForgotPassword()

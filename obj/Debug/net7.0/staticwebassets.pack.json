@@ -33,8 +33,16 @@
       "PackagePath": "staticwebassets\\images\\icons\\Warning-PNG-Clipart.png"
     },
     {
+      "Id": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\images\\icons\\arrow-clockwise.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\arrow-clockwise.svg"
+    },
+    {
       "Id": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\images\\icons\\arrow-down-up.svg",
       "PackagePath": "staticwebassets\\images\\icons\\arrow-down-up.svg"
+    },
+    {
+      "Id": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\images\\icons\\box-arrow-right.svg",
+      "PackagePath": "staticwebassets\\images\\icons\\box-arrow-right.svg"
     },
     {
       "Id": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\images\\icons\\cloud-upload.svg",
