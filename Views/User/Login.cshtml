@@ -1,39 +1,3 @@
-@* @model User 
-
-<form method="post">
-  <div class="form-group">
-    <label asp-for="Email">Email address</label>
-    <input type="email" asp-for="Email" class="form-control p-3 my-2" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <span asp-validation-for="Email" class="text-danger"></span>
-    
-  </div>
-  <div class="form-group">
-    <label asp-for="Password">Password</label>
-    <input asp-for="Password" type="password" class="form-control p-3 my-2" id="exampleInputPassword1" placeholder="Password">
-    <span asp-validation-for="Password" class="text-danger"></span>
-  </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Remember me</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-
-
-@section Scripts {
-
-    
-    <partial name="_ValidationScriptsPartial" />
-    
-} *@
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,8 +11,9 @@
 </head>
 
 @{
-    Layout = null;
+    Layout = null; @*For not using Shared Layout*@
 }
+
 @model pizzashop.ViewModel.LoginViewModel
 
 <div class="login-container d-flex flex-column flex-lg-row roboto-font">
@@ -56,16 +21,24 @@
     <div class="bg-img h-100 w-100 w-lg-50 d-none d-lg-inline-block">
         <img src="~/images/dominos_background.jpg" alt="" style="height: 100%; width: 100%; object-fit: cover;">
     </div>
+
     <div class="right w-100 h-100 custom-bg-blue d-flex flex-column justify-content-center ">
-         tatva.pce175@outlook.com
+        tatva.pce175@outlook.com
+
+
+        @* ------------------ Login form ------------- *@
+
+
         <form
             class="login-form w-sm-100  d-flex flex-column justify-content-center  align-content-center p-4 gap-3 m-auto"
             id="login-form" method="post" asp-action="Login" asp-controller="User">
+
             <div class="d-flex justify-content-center align-items-center gap-3">
                 <img src="~/images/logos/pizzashop_logo.png" class="img-fluid pizza-logo" alt="">
                 <h2 class="custom-skyblue">PIZZASHOP</h2>
             </div>
             <h3>Welcome,</h3>
+
             <div class="form-group has-feedback position-relative">
                 <input type="email" class="form-control py-3" asp-for="Email" id="email" name="email"
                     placeholder="Email *" />
@@ -73,6 +46,8 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
 
             </div>
+
+
             <div class="form-group has-feedback position-relative">
                 <input type="password" class="form-control py-3" asp-for="Password" id="passwordinput" name="password"
                     placeholder="password *" />
@@ -82,12 +57,13 @@
                     <img src="~/images/icons/eye-fill.svg" alt="" onclick="changevisibility()" class=" d-none"
                         id="hidepassword">
                 </div>
-
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
+
+
             <div class="d-flex justify-content-between">
                 <div class="form-check">
-                    <input class="form-check-input" asp-for="RememberMe" type="checkbox"  id="flexCheckDefault">
+                    <input class="form-check-input" asp-for="RememberMe" type="checkbox" id="flexCheckDefault">
                     <label class="form-check-label" asp-for="RememberMe">
                         Remember Me
                     </label>
@@ -95,18 +71,20 @@
 
                 <span><a asp-controller="User" asp-action="ForgotPassword" style="text-decoration: none;">Forget Password?</a></span>
 
-                
             </div>
-
-
             <input type="submit" value="Login" class="custom-btn-bg text-white py-2 border w-100 h-auto "></input>
 
-          @if (!ViewData.ModelState.IsValid)
-{
-    
-        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-    
-}
+
+            @*--------Need to add ViewContext to acces ModelState--------*@
+            @*This is shown when there is custom error*@
+
+            @if (ViewContext.ModelState.ContainsKey("InvalidCredentials"))
+            {
+                <div class="text-danger">
+                    @ViewContext.ModelState["InvalidCredentials"].Errors[0].ErrorMessage
+                </div>
+            }
+
         </form>
     </div>
 
@@ -116,9 +94,8 @@
 
 </html>
 
-@section Scripts {
 
-    
-    <partial name="_ValidationScriptsPartial" />
-    
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" /> @*For form Validation we added this*@
 }

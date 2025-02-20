@@ -25,7 +25,7 @@
                 <div class="d-flex">
                     <img src="~/images/Default_pfp.svg.png" alt="" class="admin-img position-relative img-fluid">
                     <div class="ms-3" style="top: 90px; left: 30px;">
-                        <h1>Admin</h1>
+                        <h1>@(Model.FirstName)</h1>
                         <span>admin</span>
                     </div>
                 </div>
@@ -39,7 +39,18 @@
         </div>
 
 
-        <form class="p-4" method="post" asp-action="UpdateProfile" asp-controller="Home">
+        <form class="p-4" method="post" asp-action="UpdateUserProfile" asp-controller="Profile">
+
+            @* ********************** hidden fields for passing to the view model*********************** *@
+
+            <input type="hidden" asp-for="Id" value="@Model.Id" />
+            <input type="hidden" asp-for="Createdby" value="@Model.Createdby" />
+            <input type="hidden" asp-for="UserId" value="@Model.UserId" />
+            <input type="hidden" asp-for="RoleId" value="@Model.RoleId" />
+            <input type="hidden" asp-for="Createddate" value="@Model.Createddate" />
+
+
+            @* ***************************************************************************************** *@
 
             <div class="d-flex gap-4 flex-column flex-md-row">
                 <div class="form-floating mb-3 col">
@@ -71,7 +82,6 @@
                 <div class="form-floating col">
                     <select asp-for="Country" class="form-select" id="Country"
                         aria-label="Floating label select example">
-                       
                     </select>
                     <label for="floatingSelect">Country</label>
                 </div>

@@ -185,12 +185,12 @@
       "PackagePath": "staticwebassets\\images\\sidebar icons\\users.png"
     },
     {
-      "Id": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\images\\toppng.com-warning-icon-2400x2400.png",
-      "PackagePath": "staticwebassets\\images\\toppng.com-warning-icon-2400x2400.png"
-    },
-    {
       "Id": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\images\\transperent-pizza.png",
       "PackagePath": "staticwebassets\\images\\transperent-pizza.png"
+    },
+    {
+      "Id": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\images\\warning.png",
+      "PackagePath": "staticwebassets\\images\\warning.png"
     },
     {
       "Id": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\js\\site.js",

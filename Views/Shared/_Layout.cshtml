@@ -97,10 +97,12 @@
                         aria-controls="offcanvasExample">
                     @* <img src="~/images/Default_pfp.svg.png" alt="" class="h-75 my-auto"> *@
                     <div class="dropdown">
-                        <div class=" dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        @* <div class=" dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="~/images/Default_pfp.svg.png" alt="" class="my-auto"
                                 style="height: 50px !important;">
-                        </div>
+                        </div> *@
+                        <img class="me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" width="50"
+                                src="~/images/Default_pfp.svg.png" alt="">
 
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li class="d-flex justify-content-start gap-2 align-items-center border py-2 border-top-0 dropdown-item">
@@ -116,10 +118,10 @@
                                         Profile</a></li>
                                 <li class="d-flex justify-content-start align-items-center gap-2 dropdown-item"> <img
                                         src="~/images/icons/arrow-clockwise.svg" alt=""> <a class="dropdown-item text-black"
-                                        href="#">Change Password</a></li>
-                                <li class="d-flex justify-content-start align-items-center gap-2 dropdown-item"><img
+                                        asp-action="ChangePassword" asp-controller="Profile">Change Password</a></li>
+                                <li class="d-flex justify-content-start align-items-center gap-2 dropdown-item" data-bs-toggle="modal" data-bs-target="#confirmationmodal"><img
                                         src="~/images/icons/box-arrow-right.svg" alt=""> <a class="dropdown-item text-black"
-                                        href="#">Log Out</a></li>
+                                        >Log Out</a></li>
                             </div>
 
                         </ul>
@@ -220,6 +222,28 @@
             </div>
         </div>
     </div>
+
+
+
+    @* ----------------modal body------------------- *@
+
+    <div class="modal" tabindex="-1" id="confirmationmodal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3" style="width: 330px !important;">
+ 
+      <div class="modal-body">
+        <div class="d-flex justify-content-center"><img src="~/images/warning.png" alt="" width="40"></div>
+        <div class="d-flex justify-content-center mt-3">Are You Sure You Want To Logout?</div>
+      </div>
+      <div class="d-flex justify-content-center align-items-center gap-2">
+       <a  asp-action="Logout" asp-controller="User"><button type="button" class="btn btn-primary px-4">Yes</button></a> 
+        <button type="button" class="btn btn-secondary px-3" data-bs-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+@* -------------------------------------------------------------- *@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

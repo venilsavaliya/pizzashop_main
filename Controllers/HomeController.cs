@@ -37,33 +37,7 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Profile()
-    {
-        var username = Request.Cookies["UserName"];
     
-    if (username != null)
-    {
-        // Fetch the user data from the database
-        var user = _db.Userdetails.FirstOrDefault(u => u.UserName == username);
-        
-        if (user != null)
-        {
-            // Pass user data to the view
-            return View(user);
-        }
-        else
-        {
-            // Redirect to login if user is not found
-            return RedirectToAction("Login", "User");
-        }
-    }
-    else
-    {
-        // Redirect to login if cookie is missing
-        return RedirectToAction("Login", "User");
-    }
-    }
-
     
 
    

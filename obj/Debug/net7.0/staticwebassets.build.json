@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5YWSkHgAd15WCvhjaep+JmxnK0TtOdGlzndFIIwF4Dc=",
+  "Hash": "7LOYDXasGGcDB+SBn0BAp0DB7Oej3tuECHbG0nTViq8=",
   "Source": "pizzashop",
   "BasePath": "_content/pizzashop",
   "Mode": "Default",
@@ -816,23 +816,6 @@
       "OriginalItemSpec": "wwwroot\\images\\sidebar icons\\users.png"
     },
     {
-      "Identity": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\images\\toppng.com-warning-icon-2400x2400.png",
-      "SourceId": "pizzashop",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\",
-      "BasePath": "_content/pizzashop",
-      "RelativePath": "images/toppng.com-warning-icon-2400x2400.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\toppng.com-warning-icon-2400x2400.png"
-    },
-    {
       "Identity": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\images\\transperent-pizza.png",
       "SourceId": "pizzashop",
       "SourceType": "Discovered",
@@ -848,6 +831,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\transperent-pizza.png"
+    },
+    {
+      "Identity": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\images\\warning.png",
+      "SourceId": "pizzashop",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\",
+      "BasePath": "_content/pizzashop",
+      "RelativePath": "images/warning.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\warning.png"
     },
     {
       "Identity": "D:\\pizzashop_solution\\pizzashop\\wwwroot\\js\\site.js",
