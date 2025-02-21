@@ -37,7 +37,7 @@ public class JwtServices
           var tokenDescriptor = new SecurityTokenDescriptor
         {
             Subject = new ClaimsIdentity(claims),
-            Expires = DateTime.UtcNow.AddHours(1), // Token expires in 1 hour
+            Expires = DateTime.UtcNow.AddDays(10), // Token expires in 10 days
             Issuer = jwtConfig["issuer"],
             Audience = jwtConfig["audience"],
             SigningCredentials = creds

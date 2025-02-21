@@ -42,5 +42,16 @@ public class GetDataController : Controller
         return Json(cities);
     }
 
+    // Get: GetData/GetUsers
+
+    [HttpGet]
+
+    public IActionResult GetUserList(){
+
+        var users = _db.Userdetails.OrderBy(u=> u.Createdby).ToList();
+
+        return Json(users);
+    }
+
    
 }

@@ -23,7 +23,7 @@
                     </a>
                 </div>
                 <div class="sidebar-option mt-4 w-100  p-3 active-option ">
-                    <a href="./superadmindashboard.html" class="sidebar-link active-option ">
+                    <a  asp-action="Index" asp-controller="Home" class="sidebar-link active-option ">
                         <div class=" d-flex justify-content-start align-items-center gap-3">
                             <img src="~/images/sidebar icons/dashboard.png" alt="">
                             <div>Dashbaord</div>
@@ -31,7 +31,7 @@
                     </a>
                 </div>
                 <div class="sidebar-option w-100 p-3">
-                    <a href="./Userlist.html" class="sidebar-link">
+                    <a asp-action="UserList" asp-controller="Profile" class="sidebar-link">
                         <div class=" d-flex justify-content-start align-items-center gap-3">
                             <img src="~/images/icons/customer.svg" alt="">
                             <div>Users</div>
@@ -155,7 +155,7 @@
                 <div class="sidebar-options-list  d-flex flex-column align-items-start  gap-3 fw-medium">
 
                     <div class="sidebar-option mt-3 w-100  p-2 active-option">
-                        <a href="./superadmindashboard.html" class="sidebar-link active-option">
+                        <a asp-action="Index" asp-controller="Home" class="sidebar-link active-option">
                             <div class=" d-flex justify-content-start align-items-center gap-3">
                                 <img src="~/images/sidebar icons/dashboard.png" alt="">
                                 <div>Dashbaord</div>
@@ -163,7 +163,7 @@
                         </a>
                     </div>
                     <div class="sidebar-option w-100 p-2">
-                        <a href="./Userlist.html" class="sidebar-link">
+                        <a asp-action="UserList" asp-controller="Profile" class="sidebar-link">
                             <div class=" d-flex justify-content-start align-items-center gap-3">
                                 <img src="~/images/sidebar icons/users.png" alt="">
                                 <div>Users</div>
