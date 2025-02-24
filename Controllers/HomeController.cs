@@ -19,7 +19,7 @@ public class HomeController : Controller
     }
 
     // [HttpGet("Index")]
-      [Authorize]
+      [Authorize(Roles = "Admin,User")]
     public IActionResult Index()
     {
        string userEmail = Request.Cookies["UserEmail"];

@@ -227,6 +227,7 @@ public class UserController : Controller
         Response.Cookies.Delete("email");
         Response.Cookies.Delete("UserName");
         Response.Cookies.Delete("ProfileUrl");
+        
         return RedirectToAction("Login", "User");
     }
 }

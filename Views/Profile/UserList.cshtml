@@ -12,7 +12,7 @@
                 <input type="text" class="p-2 w-100" placeholder="Search" id="search-field" value="@ViewBag.searchKeyword">
                 <img src="~/images/icons/search.svg" alt="" class="searchicon-img" onclick="search()">
             </div>
-            <a href="/Adduser.html"><button type="button" class=" custom-btn-bg text-white p-2 border">+ Add
+            <a asp-action="AddUser" asp-controller="Profile"><button type="button" class=" custom-btn-bg text-white p-2 border">+ Add
                     user</button></a>
         </div>
     </div>
@@ -52,8 +52,8 @@
                     <td><span class="badge @(u.Status.ToLower()=="active"?"custom-bg-green":"bg-danger")">@u.Status</span></td>
                     <td>
                         <div class="d-flex justify-content-center gap-5">
-                            <a href="./edituser.html"><img src="~/images/icons/pen.svg" alt=""></a>
-                            <img src="~/images/icons/trash.svg" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            <a asp-action="edituser" asp-controller="Profile" asp-route-id="@u.Id"><img src="~/images/icons/pen.svg" alt=""></a>
+                            <img src="~/images/icons/trash.svg" data-bs-toggle="modal" data-bs-target="#deleteusermodal" onclick="setDeleteUserId(this)" data-id="@u.Id"
                                 alt="">
                         </div>
 
@@ -88,7 +88,7 @@
 
     </div>
 </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@* <div class="modal fade" id="deleteusermodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -111,7 +111,31 @@
             </div>
         </div>
     </div>
+</div> *@
+
+
+
+    @* ----------------modal body------------------- *@
+
+    <div class="modal" tabindex="-1" id="deleteusermodal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content p-3" style="width: 420px !important;">
+ 
+      <div class="modal-body">
+        <div class="d-flex justify-content-center"><img src="~/images/warning.png" alt="" width="40"></div>
+        <div class="d-flex justify-content-center mt-3">Are You Sure You Want To Delete this user?</div>
+      </div>
+      <div class="d-flex justify-content-center align-items-center gap-2">
+       <a id="deleteUserBtn" asp-action="deleteuser" asp-controller="profile" asp-route-id="">
+    <button type="button" class="btn btn-primary px-4">Yes</button>
+</a>
+        <button type="button" class="btn btn-secondary px-3" data-bs-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
 </div>
+
+@* -------------------------------------------------------------- *@
 </div>
 
 
@@ -126,5 +150,11 @@
         var serach_keyword = document.getElementById("search-field").value;
          var pageSize = document.getElementById("pageSizeDropdown").value;
         window.location.href = '@Url.Action("UserList", "Profile")' + '?searchKeyword=' + serach_keyword+'&pageSize=' + pageSize;
+    }
+
+function setDeleteUserId(element) {
+        var userId = element.getAttribute("data-id");
+        var deleteBtn = document.getElementById("deleteUserBtn");
+        deleteBtn.href = '@Url.Action("deleteuser", "profile")' + '?id=' + userId;
     }
 </script>
